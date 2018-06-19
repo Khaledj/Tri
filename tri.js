@@ -4,7 +4,7 @@ console.log("tableau tri insertion avant tri : " + a);
 
 function insertionSort() {
     let tmp;
-    for (let i = 1; i <= a.length; i++) {
+    for (let i = 1; i < a.length; i++) {
         for (let k = i; k > 0; k--) {
             if (a[k] < a[k - 1]) {
                 tmp = a[k];
@@ -26,9 +26,9 @@ function selectionSort() {
     let tmp;
     console.log("tableau tri sélection avant tri : " + b);
 
-    for (let i = 0; i <= b.length; i++) {
+    for (let i = 0; i < b.length; i++) {
         let k = i;
-        for (let j = i + 1; j <= b.length; j++) {
+        for (let j = i + 1; j < b.length; j++) {
 
             if (b[j] <= b[k]) {
                 k = j;
@@ -46,7 +46,7 @@ function selectionSort() {
 selectionSort();
 
 //*********************tri rapide
-let tab = [3, 9, 7, 1, 6, 2, 8, 4, 5];
+let tab = [7, 1, 6, 9, 2, 3, 8, 4, 5];
 console.log("tableau tri rapide avant tri : " + tab);
 sort(0, 8);
 
