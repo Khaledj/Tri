@@ -1,6 +1,6 @@
 //************* tri par insertion
 a = [3, 9, 7, 1, 6, 2, 8, 4, 5];
-console.log("******** tableau tri insertion initial : ********* " + a);
+console.log("tableau tri insertion avant tri : " + a);
 
 function insertionSort() {
     let tmp;
@@ -17,14 +17,14 @@ function insertionSort() {
 };
 
 
-//insertionSort();
+insertionSort();
 
 //************************ Tri par sélection
 b = [3, 9, 7, 1, 6, 2, 8, 4, 5];
 
 function selectionSort() {
     let tmp;
-    console.log("*******tableau tri sélection avant tri ******* " + b);
+    console.log("tableau tri sélection avant tri : " + b);
 
     for (let i = 0; i <= b.length; i++) {
         let k = i;
@@ -43,24 +43,23 @@ function selectionSort() {
     }
 };
 
-//selectionSort();
+selectionSort();
 
 //*********************tri rapide
 let tab = [3, 9, 7, 1, 6, 2, 8, 4, 5];
-
-
+console.log("tableau tri rapide avant tri : " + tab);
 sort(0, 8);
 
 function sort(iDeb, iFin) {
     let rand = random(iDeb, iFin);
-    console.log("swap1 :" + swap(iDeb, rand));
+    swap(iDeb, rand);
     let k = iDeb;
     for (i = iDeb+1; i <= iFin; i++) {
         if (tab[i] < tab[iDeb]) {
-            console.log("swap2 :" + swap(++k, i));
+            swap(++k, i);
         }
     }
-    console.log("swap3 :" + swap(iDeb, k));
+    console.log("résultat du tri :" + swap(iDeb, k));
 
      if( iDeb<k-1) {
          sort(iDeb, k - 1);
@@ -82,4 +81,5 @@ function swap(a, b) {
     tab[a] = tab[b];
     tab[b] = temp;
     return tab;
+
 }
