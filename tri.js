@@ -11,6 +11,8 @@ function insertionSort() {
                 a[k] = a[k - 1];
                 a[k - 1] = tmp;
                 console.log("tableau après une boucle :" + a);
+            }else{
+                break;
             }
         }
     }
@@ -28,18 +30,16 @@ function selectionSort() {
 
     for (let i = 0; i < b.length; i++) {
         let k = i;
-        for (let j = i + 1; j < b.length; j++) {
+            for (let j = i + 1; j < b.length; j++) {
 
-            if (b[j] <= b[k]) {
+                if (b[j] < b[k]) {
                 k = j;
-                if (b[k] < b[i]) {
-                    tmp = b[k];
-                    b[k] = b[i];
-                    b[i] = tmp;
-                    console.log("tableau après la boucle sélection " + b);
                 }
             }
-        }
+        tmp = b[k];
+        b[k] = b[i];
+        b[i] = tmp;
+        console.log("tableau après la boucle sélection " + b);
     }
 };
 
@@ -52,20 +52,20 @@ sort(0, 8);
 
 function sort(iDeb, iFin) {
     let rand = random(iDeb, iFin);
-    swap(iDeb, rand);
+    swap(iDeb, rand,tab);
     let k = iDeb;
     for (i = iDeb+1; i <= iFin; i++) {
         if (tab[i] < tab[iDeb]) {
-            swap(++k, i);
+            swap(++k, i,tab);
         }
     }
-    console.log("résultat du tri :" + swap(iDeb, k));
+    console.log("résultat du tri :" + swap(iDeb, k,tab));
 
      if( iDeb<k-1) {
-         sort(iDeb, k - 1);
+         sort(iDeb, k - 1,tab);
      }
      if(k+1<=iFin) {
-         sort(k + 1, iFin);
+         sort(k + 1, iFin,tab);
      }
 
 }
@@ -76,10 +76,40 @@ function random(min, max) {
     return rand;
 }
 
-function swap(a, b) {
-    let temp = tab[a];
-    tab[a] = tab[b];
-    tab[b] = temp;
-    return tab;
+function swap(a, b,tableau) {
+    let temp = tableau[a];
+    tableau[a] = tableau[b];
+    tableau[b] = temp;
+    return tableau;
 
 }
+//*******************************
+//       Tri à bulle
+//*******************************
+let tabBulle = [3,9,7,1,6,2,8,4,5];
+console.log("*******tableau tri à bulle avant tri ******* " + tabBulle);
+bubblesort();
+
+function bubblesort() {
+
+    for(let i = 0; i < tabBulle.length; i++) {
+        let swapped = false;
+
+        for(let j = tabBulle.length-1; j >= i+1 ; j--) {
+            if (tabBulle[j]<tabBulle[j-1]) {
+                swap(j,j-1,tabBulle);
+                swapped = true;
+            }
+            console.log("tableau après une boucle :" + tabBulle);
+        } if (swapped == false) {
+            return
+        }
+
+    }
+
+}
+
+
+
+
+
